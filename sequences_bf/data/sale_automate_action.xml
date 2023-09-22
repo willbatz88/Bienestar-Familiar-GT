@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="sale_purchase_book" model="base.automation">
+            <field name="name">Libro de Ventas - Facturas</field>
+            <field name="model_id" ref="model_account_move"/>
+            <field name="state">code</field>
+            <field name="code">
+            if records:
+                records.create_sale()
+            </field>
+            <field name="trigger_field_ids" eval="[(6,0, [4237, 4236])]"/>
+            <field name="trigger">on_write</field>
+            <field name="filter_domain">[('state', '=', 'posted'), ('move_type', '=', 'out_invoice')]</field>
+        </record>
+    </data>
+</odoo>

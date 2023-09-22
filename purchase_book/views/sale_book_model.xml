@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+<!-- Vista de Lista Modelo Facturas de Sabana -->
+
+    <record id="view_invoice_sale_tree" model="ir.ui.view">
+        <field name="name">invoice.sale.tree</field>
+        <field name="model">invoice.sale</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="fecha_documento"/>
+                <field name="codigo"/>
+                <field name="no_factura"/>
+                <field name="serie_factura"/>
+                <field name="cliente_id"/>
+                <field name="total"/>
+                <field name="invoice_state"/>
+            </tree>
+        </field>
+    </record>
+
+<!-- Vista de Formulario Modelo Facturas de Sabana -->
+
+    <record id="view_invoice_sale_form" model="ir.ui.view">
+        <field name="name">invoice.sale.form</field>
+        <field name="model">invoice.sale</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <field name="invoice_state" widget="statusbar" options="{'clickable':'1'}" statusbar_visible="draft,progress,confirmed,lote" />
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="fecha_documento"/>
+                            <field name="codigo"/>
+                            <field name="serie_factura"/>
+                        </group>
+                        <group>  
+                            <field name="no_factura"/>
+                            <field name="cliente_id"/>
+                            <field name="nit"/>
+                            
+                            <field name="company_id" invisible="1"/>
+                            <field name="currency_id" invisible="1"/>
+                        </group>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="bienes"/>
+                            <field name="servicios"/>
+                            <field name="exportaciones"/>
+                        </group>
+                        <group>
+                            <field name="ventas"/>
+                            <field name="iva"/>
+                            <field name="total"/>
+                        </group>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="message_ids" options="{'post_refrest': 'recipients'}"/>
+                </div>      
+            </form>
+        </field>
+    </record>
+
+<!-- Definicion de Action para el Modelo Facturas de Sabana -->
+    <record id="action_invoice_sale" model="ir.actions.act_window"> 
+        <field name="name">Facturas</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">invoice.sale</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{'search_default_filter_active':1}</field>
+    </record>
+
+<!-- Definicion de Menu Item Factura -> Modelo Facturas -->
+    <menuitem id="menu_sale_invoice"
+              name="Facturas"
+              parent="menu_purchase_book_root"
+              action="action_invoice_sale"
+              sequence="12"/>
+
+<!-- Vista de Formulario Modelo Facturas de Sabana -->
+
+    <record id="view_sale_book_tree" model="ir.ui.view">
+        <field name="name">sale.book.tree</field>
+        <field name="model">sale.book</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="fecha_libro"/>
+                <field name="name"/>
+                <field name="qty_invoice"/>
+                <field name="total"/>
+                <field name="book_state"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_sale_book_form" model="ir.ui.view">
+        <field name="name">sale.book.form</field>
+        <field name="model">sale.book</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <field name="book_state" widget="statusbar" options="{'clickable':'1'}" statusbar_visible="draft,progress,paid" />
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="fecha_libro"/>
+                            <field name="company_id" invisible="1"/>
+                        </group>
+                        <group>  
+                            <field name="name"/>
+                            <field name="currency_id" invisible='1'/>
+                        </group>
+                    </group>
+                    <div position="inside">
+                        <field name="invoice_sheet_id" >
+                            <tree>
+                                <field name="fecha_documento" optional="show"/>  
+                                <field name="serie_factura"/>
+                                <field name="no_factura"/>
+                                <field name="nit"/>
+                                <field name="cliente_id"/>
+                                <field name="bienes"/>
+                                <field name="servicios"/>
+                                <field name="exportaciones" />
+                                <field name="ventas"/>
+                                <field name="iva"/>
+                                <field name="total"/>
+                            </tree>
+                        </field>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="qty_invoice"/>
+                            <field name="bienes"/>
+                            <field name="servicios"/>
+                            <field name="exportaciones"/>
+                        </group>
+                        <group>
+                            <field name="ventas"/>
+                            <field name="iva"/>
+                            <field name="total"/>
+                        </group>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="message_ids" options="{'post_refrest': 'recipients'}"/>
+                </div>      
+            </form>
+        </field>
+    </record>
+
+<!-- Definicion de Action para el Modelo Facturas de Sabana -->
+    <record id="action_sale_book" model="ir.actions.act_window"> 
+        <field name="name">Libro de Ventas</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">sale.book</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+<!-- Definicion de Menu Item Lote -> Modelo Lote -->
+    <menuitem id="menu_sale_book"
+              name="Libro de Ventas"
+              parent="menu_purchase_book_root"
+              action="action_sale_book"
+              sequence="13"/>
+</odoo>
