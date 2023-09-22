@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <report
+                id="report_purchase_xlsx"
+                string="Reporte de Libro de Compras"
+                model="purchase.book"
+                report_type="xlsx"
+                name="purchase_book.report_purchase_xlsx"
+                file="purchase_book.report_purchase_xlsx"/>
+    </data>
+</odoo>

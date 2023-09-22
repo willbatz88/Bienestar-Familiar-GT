@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="generate_book_wizard_form" model="ir.ui.view">
+        <field name="name">generate.book.wizard.form</field>
+        <field name="model">generate.book.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Generar Reporte de Libro Diario">
+                <group>
+                    <group>
+                        <field name="date_begin"/>
+                    </group>
+                    <group>
+                        <field name="date_end"/>
+                    </group>
+                </group>
+                <footer>
+                    <button name="action_print_report" type="object" string="Crear" class="btn-primary"/>
+                    <button string="Cancel" class="btn-secundary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+<!-- Definicion de Action para el Modelo Facturas de Sabana -->
+    <record id="action_generate_book" model="ir.actions.act_window"> 
+        <field name="name">Libro Diario</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">generate.book.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="generate_book_wizard_form"/>
+        <field name="target">new</field>
+    </record>
+
+    <menuitem id="menu_sale_diary_book"
+              name="Libro Diario"
+              parent="account_reports.account_reports_audit_reports_menu"
+              action="action_generate_book"/>
+
+</odoo>

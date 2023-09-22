@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+    <record id="sale_inherit" model="ir.ui.view">
+        <field name="name">sale.inherit</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">     
+            <field name="partner_shipping_id" position="after">
+                <field name="invoice_code"/>
+                <field name="operation_date"/>
+                <field name="invoice_fel"/>
+                <field name="sequence"/>
+            </field>
+        </field>
+    </record>
+</odoo>
