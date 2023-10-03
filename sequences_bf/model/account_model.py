@@ -43,6 +43,6 @@ class account_sequence_inherit(models.Model):
                     'codigo': rec.codigo,
                     #'tipo_documento': rec.tipo_documento,
                     'cliente_id': rec.partner_id.id,
-                    'serie_factura': rec.no_serie,
+                    'serie_factura': rec.serie_factura,
                     'total': rec.tax_totals['amount_total']
                 })
