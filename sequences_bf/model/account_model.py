@@ -8,7 +8,7 @@ class account_sequence_inherit(models.Model):
     comment = fields.Char(string="Comentario")
     nit = fields.Char(related='partner_id.vat', string="NIT")
 
-    codigo = fields.Selection([('1','Compras'), ('2','Servicios'), ('4','Pequeño Contribuyente')], string="Codigo de Documento")
+    codigo = fields.Selection([('1','Compras'), ('2','Servicios'), ('3','Combustible'), ('4','Pequeño Contribuyente'), ('5','Factura Especial')], string="Codigo de Documento")
     tipo_documento = fields.Selection([('fc','Factura'), ('fce','Factura Electronica'), ('fpq','Factura Pequeño Contribuyente'),('fe','Factura Especial')], string="Tipo de Documento")
     serie_factura = fields.Char('Serie de Factura')
     exento = fields.Monetary(string="Compra Generica")
