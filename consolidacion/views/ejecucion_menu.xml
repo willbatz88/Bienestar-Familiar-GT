@@ -1,6 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <menuitem id="menu_consolidacion_root"
-              name="Consolidacion"
-              sequence="10"/>  
+    <menuitem id="menu_consolidacion_root"  name="Consolidacion" sequence="10"/>  
 </odoo>

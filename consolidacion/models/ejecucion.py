@@ -4,7 +4,6 @@ from odoo import models, fields, api
 class Ejecucion(models.Model):
     _name = 'consolidacion.ejecucion'
     _description = 'Modelo de Ejecucion para Consolidacion'
-
     nombre = fields.Char(string='Nombre', required=True)
     descripcion = fields.Text(string='Descripcion')
     fecha_inicio = fields.Date(string='Fecha de Inicio')
@@ -14,11 +13,7 @@ class Ejecucion(models.Model):
         ('proceso', 'En Proceso'),
         ('finalizado', 'Finalizado')
     ], string='Estado', default='borrador')
-
     def action_ejecucion(self):
-        """
-        Metodo personalizado para cambiar el estado de la ejecucion.
-        """
         for record in self:
             if record.estado == 'borrador':
                 record.estado = 'proceso'

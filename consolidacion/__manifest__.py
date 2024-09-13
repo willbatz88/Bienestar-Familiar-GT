@@ -4,9 +4,7 @@
     'version': '1.0',
     'category': 'Custom',
     'summary': 'Gestion de Ejecuciones de Consolidacion',
-    'description': """
-        Aplicacion para gestionar las ejecuciones en el proceso de consolidacion.
-    """,
+    'description': '',
     'author': 'Tu Nombre',
     'website': 'https://www.tusitio.com',
     'depends': ['base'],
@@ -17,5 +15,5 @@
     ],
     'installable': True,
     'application': True,
-    'auto_install': False,
+
 }
