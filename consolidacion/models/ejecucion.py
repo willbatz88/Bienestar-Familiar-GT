@@ -1,3 +1,4 @@
+# ejecucion.py
 from odoo import models, fields, api
 
 class Ejecucion(models.Model):

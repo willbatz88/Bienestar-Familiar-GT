@@ -3,18 +3,18 @@
     'name': 'Consolidación',
     'version': '1.0',
     'category': 'Custom',
-    'summary': 'Módulo para la consolidación de ejecuciones',
+    'summary': 'Gestión de Ejecuciones de Consolidación',
     'description': """
-        Este módulo permite gestionar las ejecuciones en el proceso de consolidación.
+        Aplicación para gestionar las ejecuciones en el proceso de consolidación.
     """,
     'author': 'Tu Nombre',
     'website': 'https://www.tusitio.com',
-    'depends': ['base'],  # Dependencias del módulo, puedes agregar más si es necesario
+    'depends': ['base'],
     'data': [
-        'security/ir.model.access.csv',  # Seguridad y permisos
-        'views/ejecucion_views.xml',     # Vistas XML
+        'security/ir.model.access.csv',
+        'views/ejecucion_views.xml',
     ],
     'installable': True,
-    'application': True,
+    'application': True,  # Indica que es una aplicación
     'auto_install': False,
 }

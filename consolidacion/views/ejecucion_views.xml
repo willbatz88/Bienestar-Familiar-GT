@@ -1,4 +1,3 @@
-<!-- ejecucion_views.xml -->
 <odoo>
     <!-- Vista de formulario para el modelo 'ejecucion' -->
     <record id="view_form_ejecucion" model="ir.ui.view">
@@ -24,7 +23,7 @@
         <field name="name">consolidacion.ejecucion.tree</field>
         <field name="model">consolidacion.ejecucion</field>
         <field name="arch" type="xml">
-            <tree string="Ejecucion">
+            <tree string="Ejecución">
                 <field name="nombre"/>
                 <field name="estado"/>
                 <field name="fecha_inicio"/>
@@ -33,14 +32,15 @@
         </field>
     </record>
 
-    <menuitem id="menu_consolidacion_root" name="Consolidación" sequence="1"/>.
-    <!-- Menú y acción para el modelo 'ejecucion' -->
-    <menuitem id="menu_consolidacion" name="Consolidacion" sequence="1"/>
-    <!--menuitem id="menu_ejecucion" name="Ejecucion" parent="menu_consolidacion" action="action_ejecucion"-->
+    <!-- Menú principal de la aplicación -->
+    <menuitem id="menu_consolidacion_root" name="Consolidacion" sequence="1"/>
+
+    <!-- Menú secundario para 'ejecucion' -->
+    <menuitem id="menu_ejecucion" name="Ejecucion" parent="menu_consolidacion_root" action="action_ejecucion"/>
 
     <!-- Acción para abrir la vista del modelo 'ejecucion' -->
     <record id="action_ejecucion" model="ir.actions.act_window">
-        <field name="name">Ejecucion</field>
+        <field name="name">Ejecución</field>
         <field name="res_model">consolidacion.ejecucion</field>
         <field name="view_mode">tree,form</field>
     </record>
