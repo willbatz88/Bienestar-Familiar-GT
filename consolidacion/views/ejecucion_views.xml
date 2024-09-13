@@ -1,4 +1,3 @@
-<!-- ejecucion_views.xml -->
 <odoo>
     <!-- Vista de formulario para el modelo 'ejecucion' -->
     <record id="view_form_ejecucion" model="ir.ui.view">
@@ -16,7 +15,7 @@
                     </group>
                     <footer>
                         <!-- Boton para invocar la accion personalizada -->
-                        <button name="action_ejecucion" type="object" string="Cambiar Estado" class="oe_highlight"/>
+                        <button name="action_ejecucion" type="object" string="Cambiar Estado" class="btn-primary"/>
                     </footer>
                 </sheet>
             </form>
