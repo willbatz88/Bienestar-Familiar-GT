@@ -14,3 +14,14 @@ class Ejecucion(models.Model):
         ('proceso', 'En Proceso'),
         ('finalizado', 'Finalizado')
     ], string='Estado', default='borrador')
+
+    @api.model
+    def action_ejecucion(self):
+        # Lógica de la acción personalizada
+        for record in self:
+            # Aquí defines la lógica que necesitas que realice esta acción
+            if record.estado == 'borrador':
+                record.estado = 'proceso'
+            elif record.estado == 'proceso':
+                record.estado = 'finalizado'
+        return True
