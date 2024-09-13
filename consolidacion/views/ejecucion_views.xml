@@ -33,9 +33,10 @@
         </field>
     </record>
 
+    <menuitem id="menu_consolidacion_root" name="Consolidación" sequence="1"/>.
     <!-- Menú y acción para el modelo 'ejecucion' -->
-    <menuitem id="menu_consolidacion" name="Consolidación" sequence="1"/>
-    <!--menuitem id="menu_ejecucion" name="Ejecucion" parent="menu_consolidacion" action="action_ejecucion"/-->
+    <menuitem id="menu_consolidacion" name="Consolidacion" sequence="1"/>
+    <!--menuitem id="menu_ejecucion" name="Ejecucion" parent="menu_consolidacion" action="action_ejecucion"-->
 
     <!-- Acción para abrir la vista del modelo 'ejecucion' -->
     <record id="action_ejecucion" model="ir.actions.act_window">
