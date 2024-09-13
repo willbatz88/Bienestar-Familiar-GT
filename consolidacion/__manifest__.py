@@ -1,11 +1,11 @@
 # __manifest__.py
 {
-    'name': 'Consolidación',
+    'name': 'Consolidacion',
     'version': '1.0',
     'category': 'Custom',
-    'summary': 'Gestión de Ejecuciones de Consolidación',
+    'summary': 'Gestion de Ejecuciones de Consolidacion',
     'description': """
-        Aplicación para gestionar las ejecuciones en el proceso de consolidación.
+        Aplicacion para gestionar las ejecuciones en el proceso de consolidacion.
     """,
     'author': 'Tu Nombre',
     'website': 'https://www.tusitio.com',
@@ -15,6 +15,6 @@
         'views/ejecucion_views.xml',
     ],
     'installable': True,
-    'application': True,  # Indica que es una aplicación
+    'application': True,
     'auto_install': False,
 }
