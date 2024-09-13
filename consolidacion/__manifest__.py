@@ -12,6 +12,7 @@
     'depends': ['base'],
     'data': [
         'security/ir.model.access.csv',
+        'views/consolidacion_menu.xml',
         'views/ejecucion_views.xml',
     ],
     'installable': True,

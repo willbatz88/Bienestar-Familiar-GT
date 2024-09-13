@@ -40,7 +40,7 @@
     <menuitem id="menu_consolidacion_root" name="Consolidacion" sequence="1"/>
 
     <!-- Menu secundario para 'ejecucion' -->
-    <menuitem id="menu_ejecucion" name="Ejecucion" parent="menu_consolidacion_root" action="action_ejecucion"/>
+
 
     <!-- Accion para abrir la vista del modelo 'ejecucion' -->
     <record id="action_ejecucion" model="ir.actions.act_window">
