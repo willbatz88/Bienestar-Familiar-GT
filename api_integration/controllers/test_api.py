@@ -13,47 +13,46 @@ class TestApi(http.Controller):
     def createOrder(self, **kwargs):
         requests = request.httprequest.data.decode()
         data = json.loads(requests)
-        client =  request.env['res.partner'].sudo().search([('id', '=', data.get('partner_id'))])
+        #client =  request.env['res.partner'].sudo().search([('id', '=', data.get('partner_id'))])
 
-        if not client:
-                return self._error_response("El cliente no existe.")
+        #if not client:
+        #        return self._error_response("El cliente no existe.")
         
-        company =  request.env['res.company'].sudo().search([('company_registry', '=', data['company_registry'])])
+        #company =  request.env['res.company'].sudo().search([('company_registry', '=', data['company_registry'])])
 
-        if not company:
-            return self._error_response("La Empresa indicada no existe.")
+        #if not company:
+            #            return self._error_response("La Empresa indicada no existe.")
         
         try: 
-            required_fields = ['partner_id','formadepago', 'company_registry', 'order_lines', 'payment_id', 'texto_monto','additional_information']
-            for field in required_fields:
-                if field not in data or not data.get(field):
-                    return self._error_response("Falta el campo '{}' o está vacío.".format(field))
+            #required_fields = ['partner_id', 'company_registry', 'order_lines']
+            #for field in required_fields:
+            #    if field not in data or not data.get(field):
+            #        return self._error_response("Falta el campo '{}' o está vacío.".format(field))
                
-            partner_id = data.get('partner_id')
-            partner_invoice_id = data.get('partner_id')
-            partner_shipping_id = data.get('partner_id')
-            payment_id = data.get('payment_id')
-            pricelist_id = 2
-            company_id = company[0].id
-            order_lines = data.get('order_lines')
+            #partner_id = data.get('partner_id')
+            #partner_invoice_id = data.get('partner_id')
+            #partner_shipping_id = data.get('partner_id')
+            #pricelist_id = 2
+            #company_id = data['company_registry']
+            #order_lines = data.get('order_lines')
             #additional_information = data.get('additional_information')
 
             order = request.env['sale.order'].sudo().create({
-                'partner_id': partner_id,
-                'partner_invoice_id': partner_invoice_id,
-                'partner_shipping_id': partner_shipping_id,
-                'pricelist_id': pricelist_id,
-                'company_id': company_id,
-                'x_studio_factura_externa': payment_id,
-                'x_studio_estado':'Colocado',
-                'x_studio_forma_de_pago':data.get('formadepago'),
-                'x_studio_total_farmapagos':data.get('montoFarmapago'),
-                'x_studio_total_efectivo':data.get('montoEfectivo'),
-                'x_studio_total_vuelto':data.get('montoVuelto'),
-                'x_studio_total_texto':data.get('texto_monto'),
-                'x_studio_entrega':data.get('entrega'),
-                'x_studio_fecha_entrega':data.get('fecha_entrega'),
-                'x_studio_direccion_final':data.get('direccion_final'),
+                'partner_id': 331,
+                'partner_invoice_id': 331,
+                'partner_shipping_id': 331,
+                'pricelist_id': 2,
+                'company_id': 37,
+               # 'x_studio_factura_externa': payment_id,
+                #'x_studio_estado':'Colocado',
+                #'x_studio_forma_de_pago':data.get('formadepago'),
+                #'x_studio_total_farmapagos':data.get('montoFarmapago'),
+                #'x_studio_total_efectivo':data.get('montoEfectivo'),
+                #'x_studio_total_vuelto':data.get('montoVuelto'),
+                #'x_studio_total_texto':data.get('texto_monto'),
+                #'x_studio_entrega':data.get('entrega'),
+                #'x_studio_fecha_entrega':data.get('fecha_entrega'),
+                #'x_studio_direccion_final':data.get('direccion_final'),
                 'currency_id':'44',
                 'user_id':2,
             })
@@ -68,31 +67,31 @@ class TestApi(http.Controller):
                #     'value' : line.get('value')
                # })
 
-            for line in order_lines:
+            #for line in order_lines:
                 
-                request.env['sale.order.line'].sudo().create({
-                    'order_id': order.id,
-                    'product_id': line.get('product_id'),
-                    'name':line.get('name'),
-                    'product_uom' : 1, 
-                    'product_uom_qty': line.get('product_uom_qty'),
-                })
+             #   request.env['sale.order.line'].sudo().create({
+             #       'order_id': order.id,
+             #       'product_id': line.get('product_id'),
+             #       'name':line.get('name'),
+             #       'product_uom' : 1, 
+             #       'product_uom_qty': line.get('product_uom_qty'),
+             #   })
             
             order_update = request.env['sale.order'].sudo().browse(order.id)
 
             if order_update:
                 try:
-                    order_update.action_confirm()
+                 #   order_update.action_confirm()
                      #return self._success_response("Generacion de Pedido de Venta")
                     response_data = self._success_response("Pedido de venta creado correctamente. Id: {}".format(order.id), order.id)
-                    request.env['mail.activity'].sudo().create({
-                        'display_name': 'Venta Nueva',
-                        'summary': 'Hay una venta Nueva que atender',
-                        'user_id': 2,
-                        'res_id': order.id,
-                        'res_model_id': 620,
-                        'activity_type_id': 4
-                   })
+                  #  request.env['mail.activity'].sudo().create({
+                  #      'display_name': 'Venta Nueva',
+                  #      'summary': 'Hay una venta Nueva que atender',
+                  #      'user_id': 2,
+                  #      'res_id': order.id,
+                  #      'res_model_id': 620,
+                  #      'activity_type_id': 4
+                  # })
                     return Response(
                         status=200,
                         content_type="application/json; charset=utf-8",
