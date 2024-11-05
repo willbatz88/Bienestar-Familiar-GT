@@ -19,9 +19,9 @@ class TestApi(http.Controller):
         #        return self._error_response("El cliente no existe.")
 
         client = request.env['res.partner'].sudo().create({
-                'name': 'alberto' ,
+                'name': data.get('name'),
                 'city': 'Guatemala',
-                'vat': '2342342',
+                'vat': data.get('nit'),
                 'customer_rank': 1,
                 'company_type': 'person',
                 'property_account_receivable_id': 1434,
@@ -50,9 +50,9 @@ class TestApi(http.Controller):
             #additional_information = data.get('additional_information')
 
             order = request.env['sale.order'].sudo().create({
-                'partner_id': 331,
-                'partner_invoice_id': 331,
-                'partner_shipping_id': 331,
+                'partner_id': client.id,
+                'partner_invoice_id': client.id,
+                'partner_shipping_id': client.id,
                 'pricelist_id': 1,
                 'company_id': 37,
                # 'x_studio_factura_externa': payment_id,
