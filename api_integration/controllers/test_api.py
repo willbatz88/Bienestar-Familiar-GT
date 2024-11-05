@@ -78,13 +78,13 @@ class TestApi(http.Controller):
             })
             
             order_update = request.env['sale.order'].sudo().browse(order.id)
-            _logger.info('%s',order.id)
+            _logger.info('%s',order_update)
             if order_update:
                 try:
                     order_update.action_confirm()
                     #return self._success_response("Generacion de Pedido de Venta")
-                    response_data = self._success_response("Pedido de venta creado correctamente.")
-                  #  request.env['mail.activity'].sudo().create({
+                    response_data = {"finalizado":"hecho"}
+                                      #  request.env['mail.activity'].sudo().create({
                   #      'display_name': 'Venta Nueva',
                   #      'summary': 'Hay una venta Nueva que atender',
                   #      'user_id': 2,
