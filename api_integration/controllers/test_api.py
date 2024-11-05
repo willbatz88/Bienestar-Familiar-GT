@@ -56,7 +56,7 @@ class TestApi(http.Controller):
                 'currency_id':'44',
                 'user_id':2,
             })
-            _logger.info('%s',order)
+        
             _logger.info('%s',order.id)
 
             #for line in additional_information:
@@ -78,12 +78,12 @@ class TestApi(http.Controller):
             })
             
             order_update = request.env['sale.order'].sudo().browse(order.id)
-
+            _logger.info('%s',order.id)
             if order_update:
                 try:
                     order_update.action_confirm()
                     #return self._success_response("Generacion de Pedido de Venta")
-                    #response_data = self._success_response("Pedido de venta creado correctamente. Id: {}".format(order.id), order.id)
+                    response_data = self._success_response("Pedido de venta creado correctamente.")
                   #  request.env['mail.activity'].sudo().create({
                   #      'display_name': 'Venta Nueva',
                   #      'summary': 'Hay una venta Nueva que atender',
