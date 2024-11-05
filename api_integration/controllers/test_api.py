@@ -69,20 +69,20 @@ class TestApi(http.Controller):
 
             #for line in order_lines:
                 
-             #   request.env['sale.order.line'].sudo().create({
-             #       'order_id': order.id,
-             #       'product_id': line.get('product_id'),
-             #       'name':line.get('name'),
-             #       'product_uom' : 1, 
-             #       'product_uom_qty': line.get('product_uom_qty'),
-             #   })
+            request.env['sale.order.line'].sudo().create({
+                'order_id': order.id,
+                'product_id': 3510,
+                'name':'AGEFEN FORTE 600MG SUSPENCION ORAL 10x15ML SOBRES',
+                'product_uom' : 1, 
+                'product_uom_qty': 1,
+            })
             
             order_update = request.env['sale.order'].sudo().browse(order.id)
 
             if order_update:
                 try:
-                 #   order_update.action_confirm()
-                     #return self._success_response("Generacion de Pedido de Venta")
+                    order_update.action_confirm()
+                    #return self._success_response("Generacion de Pedido de Venta")
                     response_data = self._success_response("Pedido de venta creado correctamente. Id: {}".format(order.id), order.id)
                   #  request.env['mail.activity'].sudo().create({
                   #      'display_name': 'Venta Nueva',
