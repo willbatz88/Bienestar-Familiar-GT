@@ -23,7 +23,7 @@ class TestApi(http.Controller):
                 'city': 'Guatemala',
                 'vat': '2342342',
                 'customer_rank': 1,
-                'company_type': 'partner',
+                'company_type': 'person',
                 'property_account_receivable_id': 1434,
                 'property_account_payable_id': 783,
                 'company_id': 37,
