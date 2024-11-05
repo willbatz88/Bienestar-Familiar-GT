@@ -17,6 +17,18 @@ class TestApi(http.Controller):
 
         #if not client:
         #        return self._error_response("El cliente no existe.")
+
+        client = request.env['res.partner'].sudo().create({
+                'name': data.get('name') ,
+                'city': 'Guatemala',
+                'vat': data.get('nit'),
+                'customer_rank': 1,
+                'company_type': 'partner',
+                'property_account_receivable_id': 1434,
+                'property_account_payable_id': 783,
+                'company_id': 37,
+                'lang':'es_ES'
+                })
         
         #company =  request.env['res.company'].sudo().search([('company_registry', '=', data['company_registry'])])
 
@@ -41,7 +53,7 @@ class TestApi(http.Controller):
                 'partner_id': 331,
                 'partner_invoice_id': 331,
                 'partner_shipping_id': 331,
-                'pricelist_id': 2,
+                'pricelist_id': 1,
                 'company_id': 37,
                # 'x_studio_factura_externa': payment_id,
                 #'x_studio_estado':'Colocado',
@@ -53,7 +65,7 @@ class TestApi(http.Controller):
                 #'x_studio_entrega':data.get('entrega'),
                 #'x_studio_fecha_entrega':data.get('fecha_entrega'),
                 #'x_studio_direccion_final':data.get('direccion_final'),
-                'currency_id':'44',
+                'currency_id':'167',
                 'user_id':2,
             })
         
