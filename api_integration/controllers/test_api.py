@@ -46,7 +46,7 @@ class TestApi(http.Controller):
             #partner_shipping_id = data.get('partner_id')
             #pricelist_id = 2
             #company_id = data['company_registry']
-            #order_lines = data.get('order_lines')
+            order_lines = data.get('order_lines')
             #additional_information = data.get('additional_information')
 
             order = request.env['sale.order'].sudo().create({
@@ -79,15 +79,14 @@ class TestApi(http.Controller):
                #     'value' : line.get('value')
                # })
 
-            #for line in order_lines:
-                
-            request.env['sale.order.line'].sudo().create({
-                'order_id': order.id,
-                'product_id': 3510,
-                'name':'AGEFEN FORTE 600MG SUSPENCION ORAL 10x15ML SOBRES',
-                'product_uom' : 1, 
-                'product_uom_qty': 1,
-            })
+            for line in order_lines:
+                request.env['sale.order.line'].sudo().create({
+                    'order_id': order.id,
+                    'product_id': line.get('product_id'),
+                    'name':line.get('name'),
+                    'product_uom' : 1, 
+                    'product_uom_qty': line.get('product_uom_qty'),
+                })
             
             order_update = request.env['sale.order'].sudo().browse(order.id)
             _logger.info('%s',order_update)
