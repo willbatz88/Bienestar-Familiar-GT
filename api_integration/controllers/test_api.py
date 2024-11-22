@@ -78,11 +78,12 @@ class TestApi(http.Controller):
                #     'area' : line.get('area'),
                #     'value' : line.get('value')
                # })
-
+            #idproducto =  request.env['product.product'].sudo().search([('default_code', '=', data['company_registry'])])
             for line in order_lines:
+                idproducto =  request.env['product.product'].sudo().search([('default_code', '=', line.get('product_id'))])
                 request.env['sale.order.line'].sudo().create({
                     'order_id': order.id,
-                    'product_id': line.get('product_id'),
+                    'product_id': idproducto.get('id'),
                     'name':line.get('name'),
                     'product_uom' : 1, 
                     'product_uom_qty': line.get('product_uom_qty'),
