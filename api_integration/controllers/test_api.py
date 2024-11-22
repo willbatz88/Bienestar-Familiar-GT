@@ -83,7 +83,7 @@ class TestApi(http.Controller):
                 idproducto =  request.env['product.product'].sudo().search([('default_code', '=', line.get('product_id'))])
                 request.env['sale.order.line'].sudo().create({
                     'order_id': order.id,
-                    'product_id': idproducto.get('id'),
+                    'product_id': idproducto.id,
                     'name':line.get('name'),
                     'product_uom' : 1, 
                     'product_uom_qty': line.get('product_uom_qty'),
