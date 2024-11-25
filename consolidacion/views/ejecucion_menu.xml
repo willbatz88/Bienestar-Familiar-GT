@@ -1,0 +1,3 @@
+<odoo>
+    <menuitem id="menu_consolidacion_root"  name="Consolidacion" sequence="10"/>  
+</odoo>

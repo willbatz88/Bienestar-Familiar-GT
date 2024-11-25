@@ -1,0 +1,51 @@
+<odoo>
+    <!-- Vista de formulario para el modelo 'ejecucion' -->
+    <record id="view_form_ejecucion" model="ir.ui.view">
+        <field name="name">consolidacion.ejecucion.form</field>
+        <field name="model">consolidacion.ejecucion</field>
+        <field name="arch" type="xml">
+            <form string="Ejecucion">
+                <sheet>
+                    <group>
+                        <field name="nombre"/>
+                        <field name="descripcion"/>
+                        <field name="fecha_inicio"/>
+                        <field name="fecha_fin"/>
+                        <field name="estado"/>
+                    </group>
+                    <footer>
+                        <!-- Boton para invocar la accion personalizada -->
+                        <button name="action_ejecucion" type="object" string="Cambiar Estado" class="btn-primary"/>
+                    </footer>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Vista de lista para el modelo 'ejecucion' -->
+    <record id="view_tree_ejecucion" model="ir.ui.view">
+        <field name="name">consolidacion.ejecucion.tree</field>
+        <field name="model">consolidacion.ejecucion</field>
+        <field name="arch" type="xml">
+            <tree string="Ejecucion">
+                <field name="nombre"/>
+                <field name="estado"/>
+                <field name="fecha_inicio"/>
+                <field name="fecha_fin"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Menu principal de la aplicacion -->
+    <menuitem id="menu_consolidacion_root" name="Consolidacion" sequence="1"/>
+
+    <!-- Menu secundario para 'ejecucion' -->
+
+
+    <!-- Accion para abrir la vista del modelo 'ejecucion' -->
+    <record id="action_ejecucion" model="ir.actions.act_window">
+        <field name="name">Ejecucion</field>
+        <field name="res_model">consolidacion.ejecucion</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+</odoo>
