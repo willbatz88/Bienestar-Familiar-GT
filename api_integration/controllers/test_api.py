@@ -49,6 +49,30 @@ class TestApi(http.Controller):
             order_lines = data.get('order_lines')
             #additional_information = data.get('additional_information')
 
+            #2	 	TORRE_TIGO
+            #4	 	Forum Zona Viva
+            #9	 	V1_FONTABELLA
+            #10	 	V2_AVIA
+            #11	 	V3_UFM
+            #12	 	V4_URL
+            #13	 	V6_UVG
+            idVending=data.get("idVending")
+            valor=0
+            if(idVending==2):
+                valor=115 
+            if(idVending==4):
+                valor=13
+            if(idVending==9):
+                valor=8
+            if(idVending==10):
+                valor=9
+            if(idVending==11):
+                valor=25
+            if(idVending==12):
+                valor=12
+            if(idVending==13):
+                valor=11
+            objetojson={str(valor):100}
             order = request.env['sale.order'].sudo().create({
                 'partner_id': client.id,
                 'partner_invoice_id': client.id,
@@ -57,6 +81,7 @@ class TestApi(http.Controller):
                 'company_id': 37,
                 'x_studio_serie': data.get('serie'),
                 'x_studio_numero':data.get('number'),
+                
                 #'x_studio_forma_de_pago':data.get('formadepago'),
                 #'x_studio_total_farmapagos':data.get('montoFarmapago'),
                 #'x_studio_total_efectivo':data.get('montoEfectivo'),
@@ -86,6 +111,7 @@ class TestApi(http.Controller):
                     'product_id': idproducto.id,
                     'name':line.get('name'),
                     'product_uom' : 1, 
+                    'analytic_distribution':objetojson,
                     'product_uom_qty': line.get('product_uom_qty'),
                 })
             
@@ -94,6 +120,24 @@ class TestApi(http.Controller):
             if order_update:
                 try:
                     order_update.action_confirm()
+                    invoice = order_update.invoice_ids  # Esto devuelve un recordset de facturas relacionadas
+                    if invoice:
+                        # Trasladar campos personalizados
+                        invoice.write({
+                            'x_studio_numero': order_update.x_studio_numero,
+                            'x_studio_serie': order_update.x_studio_serie,
+                        })
+
+                        # Validar que las distribuciones analíticas se hayan trasladado correctamente
+                        for invoice_line in invoice.invoice_line_ids:
+                            print(f"Distribución Analítica en línea {invoice_line.id}: {invoice_line.analytic_distribution}")
+
+                        # Publicar la factura (validarla)
+                        invoice.action_post()
+
+                        print(f"Factura publicada con ID: {invoice.id}")
+
+
                     #return self._success_response("Generacion de Pedido de Venta")
                     response_data = {"finalizado":"hecho"}
                                       #  request.env['mail.activity'].sudo().create({
