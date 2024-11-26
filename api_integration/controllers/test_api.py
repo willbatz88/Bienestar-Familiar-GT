@@ -58,19 +58,19 @@ class TestApi(http.Controller):
             #13	 	V6_UVG
             idVending=data.get("idVending")
             valor=0
-            if(idVending==2):
+            if(idVending=="2"):
                 valor=115 
-            if(idVending==4):
+            if(idVending=="4"):
                 valor=13
-            if(idVending==9):
+            if(idVending=="9"):
                 valor=8
-            if(idVending==10):
+            if(idVending=="10"):
                 valor=9
-            if(idVending==11):
+            if(idVending=="11"):
                 valor=25
-            if(idVending==12):
+            if(idVending=="12"):
                 valor=12
-            if(idVending==13):
+            if(idVending=="13"):
                 valor=11
             objetojson={str(valor):100}
             order = request.env['sale.order'].sudo().create({
