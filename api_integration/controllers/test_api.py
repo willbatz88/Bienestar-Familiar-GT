@@ -95,6 +95,7 @@ class TestApi(http.Controller):
             })
         
             _logger.info('%s',order.id)
+            _logger.info('%s',valor)
 
             #for line in additional_information:
              #   request.env['order.additional_information'].sudo().create({
