@@ -119,8 +119,10 @@ class TestApi(http.Controller):
             if order_update:
                 try:
                     order_update.action_confirm()
+                    invoices = order_update._create_invoices()
                     invoice = order_update.invoice_ids  # Esto devuelve un recordset de facturas relacionadas
-                    _logger.info('%s',order_update)
+                    _logger.info('%s',invoices)
+                    _logger.info('%s',invoice)
                     if invoice:
                         # Trasladar campos personalizados
                         invoice.write({
