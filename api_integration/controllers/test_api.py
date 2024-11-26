@@ -94,8 +94,7 @@ class TestApi(http.Controller):
                 'user_id':2,
             })
         
-            _logger.info('%s',order.id)
-            _logger.info('%s',data)
+            
 
             #for line in additional_information:
              #   request.env['order.additional_information'].sudo().create({
@@ -117,11 +116,11 @@ class TestApi(http.Controller):
                 })
             
             order_update = request.env['sale.order'].sudo().browse(order.id)
-            _logger.info('%s',order_update)
             if order_update:
                 try:
                     order_update.action_confirm()
                     invoice = order_update.invoice_ids  # Esto devuelve un recordset de facturas relacionadas
+                    _logger.info('%s',order_update)
                     if invoice:
                         # Trasladar campos personalizados
                         invoice.write({
