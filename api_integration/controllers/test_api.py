@@ -81,7 +81,7 @@ class TestApi(http.Controller):
                 'company_id': 37,
                 'x_studio_serie': data.get('serie'),
                 'x_studio_numero':data.get('number'),
-                
+                'date_order':data.get('fecha'),
                 #'x_studio_forma_de_pago':data.get('formadepago'),
                 #'x_studio_total_farmapagos':data.get('montoFarmapago'),
                 #'x_studio_total_efectivo':data.get('montoEfectivo'),
