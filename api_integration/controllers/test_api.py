@@ -123,12 +123,12 @@ class TestApi(http.Controller):
                     invoice = order_update.invoice_ids  # Esto devuelve un recordset de facturas relacionadas
                     _logger.info('%s',invoices)
                     _logger.info('%s',invoice)
-                    if invoices:
+                   # if invoices:
                         # Trasladar campos personalizados
-                        invoices.write({
-                            'x_studio_numero_fel': order_update.x_studio_numero,
-                            'x_studio_serie_fel': order_update.x_studio_serie,
-                        })
+                    #    invoices.write({
+                     #       'x_studio_numero_fel': order_update.x_studio_numero,
+                     #       'x_studio_serie_fel': order_update.x_studio_serie,
+                     #   })
 
                         # Validar que las distribuciones analíticas se hayan trasladado correctamente
                       #  for invoice_line in invoice.invoice_line_ids:
