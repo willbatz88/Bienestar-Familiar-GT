@@ -124,7 +124,7 @@ class TestApi(http.Controller):
                 try:
                     order_update.action_confirm()
                     order_update.write({
-                           'date_order':data.get('fecha')
+                           'date_order':data.get('fecha'),'created_date':data.get('fecha')
                         })
                     invoices = order_update._create_invoices()
                     invoice = order_update.invoice_ids  # Esto devuelve un recordset de facturas relacionadas
