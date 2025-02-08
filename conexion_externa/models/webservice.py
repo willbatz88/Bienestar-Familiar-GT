@@ -1,8 +1,8 @@
 import requests
 import json
 from odoo import models, fields, api
-class WebServiceConnector(models.Model):
-    _name = "web.service.connector"
+class webconnector(models.Model):
+    _name = "webconnector"
     _description = "Conector para enviar transferencias a un WebService"
     response_message = fields.Text(string="Respuesta del Servidor")
     @api.model
@@ -15,7 +15,6 @@ class WebServiceConnector(models.Model):
             return response.json()
         except requests.exceptions.RequestException as e:
             raise UserError(_("Error al enviar la transferencia: %s") % str(e))
-
         return True;
          #picking = self.env["stock.picking"].browse(picking_id)
         
