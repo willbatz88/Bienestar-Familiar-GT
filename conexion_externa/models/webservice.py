@@ -16,7 +16,8 @@ class WebServiceConnector(models.Model):
         except requests.exceptions.RequestException as e:
             raise UserError(_("Error al enviar la transferencia: %s") % str(e))
 
-        #picking = self.env["stock.picking"].browse(picking_id)
+        return True;
+         #picking = self.env["stock.picking"].browse(picking_id)
         
         # Datos de la transferencia
         #datos_transferencia = {
