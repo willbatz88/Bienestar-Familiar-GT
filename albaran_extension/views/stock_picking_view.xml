@@ -9,7 +9,7 @@
                         type="object"
                         string="Confirmar y Notificar"
                         class="oe_highlight"
-                         />
+                        attrs="{'invisible': [('state', 'in', ['confirmed'])]}" />
             </header>
         </field>
     </record>
