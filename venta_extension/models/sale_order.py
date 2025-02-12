@@ -29,7 +29,7 @@ class SaleOrder(models.Model):
             producto= {
                     "product_id": base,
                     "name": product.name,
-                    "product_uom_qty":line.product_uom_qty,
+                    "product_uom_qty":str(line.product_uom_qty),
                     "product_uom":1,
                     "unit_cost":product.standard_price
                 } 
