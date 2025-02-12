@@ -37,7 +37,7 @@ class StockPicking(models.Model):
         #response=requests.get(url)
         response = requests.post(url, data=json.dumps(datos_transferencia))
         # Verificar la respuesta
-        _logger.info("codigo"+response.status_code)
+        _logger.info("codigo: "+str(response.status_code))
         if response.status_code != 200:
             raise Exception(f"Error en la solicitud: {response.status_code} - {response.text}")
         return True
