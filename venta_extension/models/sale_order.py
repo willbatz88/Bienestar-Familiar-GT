@@ -8,6 +8,12 @@ _logger = logging.getLogger(__name__)
 
 class SaleOrder(models.Model):
     _inherit = "sale.order"  # Extendemos el modelo de albaranes
+    def obtener_fecha_formateada():
+    # Obtener la fecha actual
+        fecha_actual = datetime.now()
+    # Convertir la fecha al formato deseado: 'yyyy-mm-dd'
+        fecha_formateada = fecha_actual.strftime("%Y-%m-%d")
+        return fecha_formateada
 
     def action_mi_accion(self):
         _logger.info(f"Venta confirmado y notificado."+str(self.id))
@@ -20,10 +26,10 @@ class SaleOrder(models.Model):
             "provider_id": 1,
             "payment_method_id": 1,
             "origin":"Bodega Central",
-            "scheduled_date":"2025-02-28",
-            "id_sistema_origen":"Odoo-003",
-            "invoice":"0",
-            "serie":"0",
+            "scheduled_date":obtener_fecha_formateada(),
+            "id_sistema_origen":self.name,
+            "invoice":"32323",
+            "serie":"234234234",
             "moves": [
                 {
                     "product_id": 240,
