@@ -1,0 +1,16 @@
+<odoo>
+    <record id="view_order_form_inherit_custom" model="ir.ui.view">
+        <field name="name">sale.order.form.custom</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <!-- Se añade el botón en la cabecera (header) del formulario -->
+            <header position="inside">
+                <button name="action_mi_accion"
+                        string="Mi Acción"
+                        type="object"
+                        class="oe_highlight"/>
+            </header>
+        </field>
+    </record>
+</odoo>
