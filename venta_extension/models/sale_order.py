@@ -50,6 +50,7 @@ class SaleOrder(models.Model):
             "serie":"234234234",
             "moves":lista
         }
+        _logger.info(datos_transferencia)
         headers = {"Content-Type": "application/json"}
         #response=requests.get(url)
         response = requests.post(url, data=json.dumps(datos_transferencia),headers=headers)
