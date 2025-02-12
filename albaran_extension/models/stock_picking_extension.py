@@ -34,8 +34,9 @@ class StockPicking(models.Model):
                 } 
             ]
         }
+        headers = {"Content-Type": "application/json"}
         #response=requests.get(url)
-        response = requests.post(url, data=json.dumps(datos_transferencia))
+        response = requests.post(url, data=json.dumps(datos_transferencia),headers=headers)
         # Verificar la respuesta
         _logger.info("codigo: "+str(response.status_code))
         if response.status_code != 200:
