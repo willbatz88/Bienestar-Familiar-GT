@@ -9,7 +9,7 @@ _logger = logging.getLogger(__name__)
 class SaleOrder(models.Model):
     _inherit = "sale.order"  # Extendemos el modelo de albaranes
 
-    def confirmar_y_notificar(self):
+    def action_mi_accion(self):
         _logger.info(f"Venta confirmado y notificado."+str(self.id))
         # Definir la URL del servicio web
         url = "https://srfarmacia.bf-transac.com/api/IntegrateSrFrm/NotificarVenta"
