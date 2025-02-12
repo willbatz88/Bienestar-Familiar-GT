@@ -22,6 +22,20 @@ class SaleOrder(models.Model):
         fecha_formateada = fecha_actual.strftime("%Y-%m-%d")
         # Definir la URL del servicio web
         url = "https://srfarmacia.bf-transac.com/api/IntegrateSrFrm/NotificarVenta"
+        lista=[]
+        base=240
+        for line in self.order_line:
+            product = line.product_id
+            producto= {
+                    "product_id": base,
+                    "name": product.name,
+                    "product_uom_qty":line.product_uom_qty,
+                    "product_uom":1,
+                    "unit_cost":product.standard_price
+                } 
+            base=base+1
+            lista.append(producto)
+
         datos_transferencia = {
             "picking_type_id": 1,
             "location_origin_id": 1,
@@ -33,15 +47,7 @@ class SaleOrder(models.Model):
             "id_sistema_origen":self.name,
             "invoice":"32323",
             "serie":"234234234",
-            "moves": [
-                {
-                    "product_id": 240,
-                    "name": "[P017896] TYLENOL EXTRAFUERTE 500MG 20 CAPSULA (10 SOBRE X 2)",
-                    "product_uom_qty":25,
-                    "product_uom":1,
-                    "unit_cost":10.00
-                } 
-            ]
+            "moves":producto
         }
         headers = {"Content-Type": "application/json"}
         #response=requests.get(url)
