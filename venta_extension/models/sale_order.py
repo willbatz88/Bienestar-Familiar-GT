@@ -47,7 +47,7 @@ class SaleOrder(models.Model):
             "id_sistema_origen":self.name,
             "invoice":"32323",
             "serie":"234234234",
-            "moves":producto
+            "moves":lista
         }
         headers = {"Content-Type": "application/json"}
         #response=requests.get(url)
