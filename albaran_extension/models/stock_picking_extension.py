@@ -16,7 +16,7 @@ class StockPicking(models.Model):
         datos_transferencia = {
             "picking_type_id": 1,
             "location_origin_id": 1,
-            "location_dest_id": r1,
+            "location_dest_id": 1,
             "provider_id": 1,
             "payment_method_id": 1,
             "origin":"Bodega Central",
